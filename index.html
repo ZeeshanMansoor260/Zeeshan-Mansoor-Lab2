@@ -1,187 +1,401 @@
-    <!DOCTYPE html>
-    
-    <!-- Specify a default language -->
-     
-    <html lang="en">
-     
-        <head>
-    <!-- Define the character set  -->
-     
-            <meta charset="utf-8">
- 
-    <!-- Load the stylesheets  -->
+<!DOCTYPE html>
+<html>
+<head>
 
-            <link rel="stylesheet" href="style\">
-            <link rel="icon" href="image\">
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-     
-    <!-- Set the title of your application -->
-     
-            <title>Portfolio</title>
-     
-            <!-- 
-                As you may or may not have already
-                realized, HTML5 isn't supported in
-                older versions of internet explorer.
-     
-                To compensate for this, you should
-                use html5shiv to add support to
-                HTML5.
-     
-                The code used to do this, will only
-                work inside the HEAD, however.
-     
-                And for performance sake, this should
-                go after the CSS.
-            -->
-     
-            <!--[if lt IE 9]>
-                <script src="dist/html5shiv.js"></script>
-            <![endif]-->
-     		<style>
-#div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
-ul#menu li {
-    display:inline;
+ 
+</head>
+<style>
+input#gobutton{
+cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/
+padding:15px 25px; /*add some padding to the inside of the button*/
+background:#35b128; /*the colour of the button*/
+border:1px solid #33842a; /*required or the default border for the browser will appear*/
+/*give the button curved corners, alter the size as required*/
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+/*give the button a drop shadow*/
+-webkit-box-shadow: 0 0 4px rgba(0,0,0, .75);
+-moz-box-shadow: 0 0 4px rgba(0,0,0, .75);
+box-shadow: 0 0 4px rgba(0,0,0, .75);
+/*style the text*/
+color:#f3f3f3;
+font-size:1.5em;
 }
-h1 {
-    text-align: center;
+/***NOW STYLE THE BUTTON'S HOVER AND FOCUS STATES***/
+input#gobutton:hover, input#gobutton:focus{
+background-color :#399630; /*make the background a little darker*/
+/*reduce the drop shadow size to give a pushed button effect*/
+-webkit-box-shadow: 0 0 1px rgba(0,0,0, .75);
+-moz-box-shadow: 0 0 1px rgba(0,0,0, .75);
+box-shadow: 0 0 1px r
 }
-h2 {
-    text-align: center;
+h1{
+	text-align: center;
 }
-ul {
-    text-align: center;
-}
-div.relative{
-	position: relative;
-    left: 590px;
-}
-div.relative1{
-	position: relative;
-    left: 390px;
-}
-.main div{
-	display:none;
-}
-.main div:target{
-	display:block;
-}
- @media
-    (min-width: 0px) and (-webkit-min-device-pixel-ratio: 1.5),
-    (min-width: 0px) and (-o-min-device-pixel-ratio: 3/2),
-    (min-width: 0px) and (min--moz-device-pixel-ratio: 1.5),
-    (min-width: 0px) and (min-device-pixel-ratio: 1.5) {
-
-img.res_img {
-    width: 250px;
-    height: 100px;
-}
-
-}
-
- @media (min-width: 440px) {
-	img.res_img {
-    width: 250px;
-    height: 100px;
-}
-}
-
- @media (min-width: 640px) {
-	img.res_img {
-    width: 450px;
-    height: 200px;
-}
-}
-
- @media (min-width: 1024px) {
-
-img.res_img {
-    width: 1204px;
-    height: 428px;
-}
-	
-}
-
 </style>
-        </head>
-     
-    <body>
-    
-    <div class="container">
-     
-   
-     
-    <header>
-	<h1> Image Browser </h1>
-     
-  
-     
-    </header>
-     
-     
-    
-     
-    <div class="main">
-		
-	   <div id="img1" >
-		<img class="res_img" src="image1.JPG"  >
-    	   </div>
+<body style="background-color:#D0D0D0  ;">
+	<div> <h1>   Dynamic Form </h1></div>
+	<div>	
+	<button type="button" id="button" class="btn btn-default" onClick="FormCreate()" >Create Form</button>	
+	<button type="button" id="button" class="btn btn-default" onClick="FormCreateJSON()" >Create Form from JSON</button>	
+	</div>
+	<div id="form1">
+	<div class="row">
+		<div class="col-md-2">
+			<button type="button" id="button1" class="btn btn-info" onClick="username()" >input name</button>
+		</div>
+		<div class="col-md-2">
+			<button type="button" id="button2" class="btn btn-info" onClick="inputpassword()" >input password</button>
+		</div>
+		<div class="col-md-2">
+			<button type="button" id="button3" class="btn btn-info" onClick="selectoption()" >Selectoption</button>
+		</div>
+		<div class="col-md-2">
+			<button type="button" id="button4" class="btn btn-info" onClick="radiooption()" >radio</button>
+		</div>
+		<div class="col-md-2">
+			<button type="button" id="button5" class="btn btn-info" onClick="datalist()" >DataList</button>
+		</div>
+		<div class="col-md-2">
+			<button type="button" id="button6" class="btn btn-info" onClick="areatext()" >TextArea</button>
+		</div>
+	</div>	
 	
-	<div id="img2" >
-		<img class="res_img" src="image2.JPG"  >
-    	   </div>
-	
-	<div id="img3" >
-		<img class="res_img" src="image3.JPG"  >
-    	   </div>
-
-	<div id="img4" >
-		<img class="res_img" src="image4.JPG"  >
-    	   </div>
-
-	<div id="img5" >
-		<img class="res_img" src="image5.JPG"  >
-    	   </div>
-
-	<div id="img6" >
-		<img class="res_img" src="image5.JPG"  >
-    	   </div>	
-	   
-	
-			<a  href="#img1">	<img src="image1.jpg" width="110" height="90">
-			
-			</a>
-		
-			<a  href="#img2">	<img src="image2.jpg" width="110" height="90">
-			
-			</a>
-			
-				
-			<a  href="#img3">	<img src="image3.jpg" width="110" height="90">
-			
-			</a>
-
-			<a  href="#img4">	<img src="image4.jpg" width="110" height="90">
-			
-			</a>
-
-			<a  href="#img5">	<img src="image5.jpg" width="110" height="90">
-			
-			</a>
-
-		
-     		
-	  </div>
-            
-</div>
-
-     
-    
-
-    </div>
+	</div>
 </body>
+<script>
+	var passwordlength,validusername,maxusername;
+	function FormCreate(){
+		
+		var f = document.createElement("form");
+		f.setAttribute('method',"post");
+		f.setAttribute('action',"");
+			
+		
+		f.setAttribute('id',"myform");
+		
+		
+		
+
+		var s = document.createElement("input"); //input element, Submit button
+		s.setAttribute('type',"submit");
+		s.setAttribute('value',"Submit");
+
+		
+		f.appendChild(s);
+		document.getElementsByTagName('body')[0].appendChild(f);
+		
+		//Submit COde
+		
+
+   $('#myform').submit(function() {
+   //alert("hello");
+		
+		
+		var newJSONData = {};
+		x=document.getElementById("username");
+		y=document.getElementById("password");
+		z=document.getElementById("textarea");
+		if(x){
+			var valid=validateusername();
+			//alert(valid);
+			if(valid==true){
+				usernametext=$("#username").val();
+				console.log(usernametext);
+			}	
+		
+		}
+		if(y){
+			var valid=validatepassword();
+			if(valid==true){
+				passwordtext=$("#password").val();
+				console.log(passwordtext);
+				}
+		
+		}
+		if(z){
+			var valid=validatearea();
+			if(valid==true){
+			areatext=$("#textarea").val();
+			console.log(areatext);
+			}
+		}
+      
+	   usernametype="text";
+	   
+   // textarea=$("#textarea").val();
+	//console.log(5 + 6);
+   //console.log(projectID);
+
+
+    newJSONData = [
+		{"usernametext" :usernametext},
+        {"passwordtext" :passwordtext},
+        {"textarea" :areatext},
+       
+    ];
+
+	console.log(JSON.stringify(newJSONData));
+	localStorage.setItem('form',JSON.stringify(newJSONData));
+	
+	
+	
+	
+		
+	
+	})
+	
+	}
+	
+	function username() {
+		var person = prompt("Please enter username", "username");
+		validusername = prompt("Do you want input as numbers only Yes/No", "yes");
+		maxusername = prompt("maximum length of username","max");
+		var i = document.createElement("input"); //input element, text
+		if (validusername.match("yes")){
+			i.setAttribute('type',"number");
+		}
+		else{
+			i.setAttribute('type',"text");
+			
+			
+		
+		}
+		
+		i.setAttribute('name',"username");
+		i.setAttribute('id',"username");
+		var x = document.createElement("LABEL");
+		var t = document.createTextNode(person);
+		x.setAttribute("for", "username");
+		x.appendChild(t);
+		document.getElementById("myform").insertBefore(x,document.getElementById("username"));
+		document.getElementsByTagName('form')[0].appendChild(i);
+		
+	
+	}
+	
+	function inputpassword() {
+		var person = prompt("Please enter password name", "password");
+		passwordlength = prompt("maximum length of password ", "length");
+		var i = document.createElement("input"); //input element, text
+		i.setAttribute('type',"password");
+		i.setAttribute('name',"password");
+		i.setAttribute('id',"password");
+		var x = document.createElement("LABEL");
+		var t = document.createTextNode(person);
+		x.setAttribute("for", "password");
+		x.appendChild(t);
+		
+		document.getElementById("myform").insertBefore(x,document.getElementById("password"));
+		document.getElementsByTagName('form')[0].appendChild(i);
+	
+	}	
+	function selectoption() {
+		var person1 = prompt("Please enter option1", "option1");
+		var person2 = prompt("Please enter option2", "option2");
+		var person3 = prompt("Please enter option3", "option3");
+		var person4 = prompt("Please enter option4", "option4");
+		var i = document.createElement("select"); //input element, text
+		//i.setAttribute('type',"password");
+		//i.setAttribute('name',"password");
+		i.setAttribute('id',"optionselect");
+		var x1 = document.createElement("option");
+		var x2 = document.createElement("option");
+		var x3 = document.createElement("option");
+		var x4 = document.createElement("option");
+		//var t = document.createTextNode("Password");
+		
+		x1.text=person1;
+		x2.text=person2;
+		x3.text=person3;
+		x4.text=person4;
+		
+		i.add(x1);
+		i.add(x2);
+		i.add(x3);
+		i.add(x4);
+		
+		//document.getElementById("myform").insertBefore(x,document.getElementById("password"));
+		document.getElementsByTagName('form')[0].appendChild(i);
+	
+	}	
+	
+	function radiooption(){
+		var valid = prompt("enter o for optional. Enter r for required ", "o");
+		var person1 = prompt("Please enter radiooption1", "option1");
+		var person2 = prompt("Please enter radiooption2", "option2");
+		if (valid.match('o')){
+		var i = document.createElement("input");
+		i.type="radio";
+		i.id="radio1";
+		i.value="yes";
+		i.name="yes";
+		var label = document.createElement("label");
+		label.appendChild(i);
+		label.appendChild(document.createTextNode(person1));
+		document.getElementsByTagName('form')[0].appendChild(label);
+		
+		var ix = document.createElement("input");
+		ix.type="radio";
+		ix.id="radio1";
+		ix.value="yes";
+		ix.name="yes";
+		var label1 = document.createElement("label");
+		label1.appendChild(ix);
+		label1.appendChild(document.createTextNode(person2));
+		}
+		if (valid.match('r')){
+		var i = document.createElement("input");
+		i.type="radio";
+		i.id="radio1";
+		i.value="yes";
+		i.name="yes";
+		i.checked="check";
+		var label = document.createElement("label");
+		label.appendChild(i);
+		label.appendChild(document.createTextNode(person1));
+		document.getElementsByTagName('form')[0].appendChild(label);
+		
+		var ix = document.createElement("input");
+		ix.type="radio";
+		ix.id="radio1";
+		ix.value="yes";
+		ix.name="yes";
+		var label1 = document.createElement("label");
+		label1.appendChild(ix);
+		label1.appendChild(document.createTextNode(person2));
+		}
+		
+		document.getElementsByTagName('form')[0].appendChild(label1);
+	
+	}
+	
+	function datalist(){
+		var person1 = prompt("Please enter DataList1", "option1");
+		var person2 = prompt("Please enter DataList2", "option2");
+		var person3 = prompt("Please enter DataList3", "option3");
+		var x = document.createElement("INPUT");
+    x.setAttribute("list", "browsers");
+    document.getElementById("myform").appendChild(x);
+
+    var y = document.createElement("DATALIST");
+    y.setAttribute("id", "browsers");
+    document.getElementById("myform").appendChild(y);
+
+    var z1 = document.createElement("OPTION");
+    z1.setAttribute("value", person1);
+    document.getElementById("browsers").appendChild(z1);
+	
+	var z2 = document.createElement("OPTION");
+    z2.setAttribute("value", person2);
+    document.getElementById("browsers").appendChild(z2);
+	
+	var z3 = document.createElement("OPTION");
+    z3.setAttribute("value", person3);
+    document.getElementById("browsers").appendChild(z3);
+	
+	
+}	
+
+function areatext(){
+	var x = document.createElement("TEXTAREA");
+	x.setAttribute("id", "textarea");
+	document.getElementById("myform").appendChild(x);
+}
+
+function validateusername() {
+	var letterNumber = /^[0-9]+$/;
+    var x = $("#username").val();
+	//alert(x);
+	if (x.length>=maxusername){
+		 alert("usernname greater than maximum length");
+		return false;
+	}
+	if(validusername.match("no")){
+		if (x.match(letterNumber)) {
+        alert("Name must be filled out properly alphabets only");
+		return false;
+    }
+	else{
+		return true;
+		}
+	
+	}
+	if(validusername.match("yes")){
+		return true;
+	}
+    
+	
+}
+function validatepassword() {
+	//alert(passwordlength);
+    var x = $("#password").val();
+	//alert(x);
+    if (x.length>=passwordlength) {
+        alert("password greater than limit");
+		return false;
+    }
+	else{
+		return true;
+		}
+}
+
+function validatearea(){
+	var x = $("#textarea").val();
+	//alert(x);
+	if (x.length==0) {
+        alert("textarea is empty");
+		return false;
+    }
+	else{
+		return true;
+		}
+
+}
+
+function FormCreateJSON(){
+
+	var formData= JSON.parse(localStorage.getItem('form'));
+	//alert("hello");
+	console.log(JSON.stringify(formData));
+	obj = formData;
+	//alert(obj.length);
+	for (y=0; y<obj.length;y++){
+		console.log((JSON.stringify(obj[y])));
+	}
+	if(obj[0]){
+		var i = document.createElement("input"); 	
+		i.setAttribute('type',"text");
+		i.setAttribute('value',obj[0].usernametext);
+		document.getElementsByTagName('body')[0].appendChild(i);
+	}
+	if(obj[1]){
+		var i = document.createElement("input"); 	
+		i.setAttribute('type',"password");
+		i.setAttribute('value',obj[1].passwordtext);
+		document.getElementsByTagName('body')[0].appendChild(i);
+	}
+	if(obj[2]){
+		var i = document.createElement("TEXTAREA"); 	
+		//alert(obj[2].textarea);
+		var txt = document.createTextNode(obj[2].textarea);
+		i.setAttribute('value',txt);
+		document.getElementsByTagName('body')[0].appendChild(i);
+	}
+	
+	
+}
+
+	</script>
+	
 </html>
